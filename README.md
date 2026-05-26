@@ -1,6 +1,6 @@
 # UserLogin
 
-# MEDINVENTORY PROJECT1 — User Dashboard & Authentication System
+# TICKET MANAGEMENT PROJECT1 — User Dashboard & Authentication System
 
 ## Overview
 
