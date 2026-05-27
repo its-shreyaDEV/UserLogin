@@ -1,10 +1,11 @@
 # UserLogin
 
-# TICKET MANAGEMENT PROJECT1 — User Dashboard & Authentication System
+# TICKET MANAGEMENT 
+User Dashboard & Authentication System
 
 ## Overview
 
-MEDINVENTORY PROJECT1 is a Spring Boot based user management and authentication platform designed with an enterprise-style layered architecture. The project demonstrates real-world backend development concepts including MVC architecture, database integration, form handling, session management, and scalable application structure.
+It is a Spring Boot based user management and authentication platform designed with an enterprise-style layered architecture. The project demonstrates real-world backend development concepts including MVC architecture, database integration, form handling, session management, and scalable application structure.
 
 The system allows users to:
 
