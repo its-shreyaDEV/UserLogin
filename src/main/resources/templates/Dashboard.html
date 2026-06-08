@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <!-- Welcome Section -->
+    <h1 class="text-center mb-4">
+        Welcome,
+        <span th:text="${loggedInUser}">User</span>
+    </h1>
+	
+	<!--<p th:if="${successMessage}"
+	   th:text="${successMessage}"
+	   class="text-center text-success mb-3">
+	</p>-->
+
+	<div th:if="${respObj}" class="text-center">
+		<p th:block th:if="${respObj.respStatus==true}"
+			   th:text="${respObj.message}"
+			   class="text-center text-success mb-3">
+		
+			</p>
+		<p th:block th:unless="${respObj.respStatus==true}"
+			th:text="${respObj.message}"
+						   class="text-center text-danger mb-3">
+		</p> 		
+	</div>
+
+    <!-- Dashboard Card -->
+    <div class="card shadow">
+
+        <!-- Header -->
+        <div class="card-header d-flex justify-content-between align-items-center">
+
+            <h4 class="mb-0">
+                User Dashboard
+            </h4>
+
+            <a href="/register" class="btn btn-primary">
+                <i class="fa-solid fa-user-plus"></i>
+                 Create User
+            </a>
+
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+
+            <!-- Search Box -->
+            <div class="mb-3">
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Search User">
+
+                </div>
+
+            </div>
+
+            <!-- User Table -->
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-light">
+
+                <tr>
+					<th>Sl No.</th>
+                    <th>Username</th>
+                    <th>Email ID</th>
+                    <th>Role</th>
+                    <th>Valid From</th>
+                    <th>Valid To</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                </thead>
+				<!-- Only render the tbody if the users list is not null and not empty -->
+				<tbody th:if="${users != null and !users.empty}">
+
+				    <!--  declare botheuObj and the status variable  -->
+				    <tr th:each="uObj, userStat : ${users}">
+
+           
+					<td th:text="${userStat.count}">1</td>
+
+                    <td th:text="${uObj.username}"></td>
+
+                    <td th:text="${uObj.email}"></td>
+
+                    <td th:text="${uObj.role}"></td>
+
+                    <td th:text="${uObj.validFrom}"></td>
+
+                    <td th:text="${uObj.validTo}"></td>
+
+                    <td>
+
+                        <span class="badge bg-success"
+                              th:if="${uObj.status == 1}">
+                            Active
+                        </span>
+
+                        <span class="badge bg-secondary"
+                             th:unless="${uObj.status == 1}">
+                            Inactive
+                        </span>
+
+                    </td>
+
+                    <td>
+<div>
+                        <a th:href="@{/editUser(userId=${uObj?.slNo})}" class="btn btn-warning btn-sm">
+                            <i class="fa-solid fa-pen"></i>Edit 			
+										</a>
+
+						<a th:href="@{/deleteUser(userId=${uObj?.slNo})}" class="btn btn-danger btn-sm">
+										                           <i class="fa-solid fa-trash"></i>Delete 			
+						</a>
+						</div>
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+<script>
+	
+</script>
+</html>
